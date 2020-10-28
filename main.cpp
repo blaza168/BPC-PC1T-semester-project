@@ -10,11 +10,21 @@ int main() {
     struct Pharmacy pharmacies[20];
     struct Pharmacist pharmacists[20];
     // Program flow variables
-    MenuOption menuOption = NONE;
+    MenuOption menuOption = MENU;
 
     // Initialization
     init_ui();
 
     // Start of app
-    print_welcome_screen();
+    display_welcome_screen();
+
+    while (menuOption != EXIT) {
+        if (menuOption == MENU) {
+            menuOption = display_menu();
+        } else if (menuOption == CREATE_PHARMACIST) {
+            PharmacistCreateRequest createRequest = display_create_pharmacist_page();
+        }
+    }
+
+    return 0;
 }

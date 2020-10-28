@@ -1,4 +1,5 @@
 #include "constants.h"
+#include "../entity/requests/create/pharmacist_create_request.h"
 
 #ifndef SEMESTRAL_PROJECT_CONSOLE_H
 #define SEMESTRAL_PROJECT_CONSOLE_H
@@ -15,14 +16,23 @@ void init_ui();
  * until user presses button
  * Clear screen after that
  */
-void print_welcome_screen();
+void display_welcome_screen();
 
 /**
  * Display menu of available operations
+ * Clear screen after getting input from user
  *
- * Returns:
- *      MenuOption - action that user wants to perform
+ * @return Action that user wants to perform
  */
 MenuOption display_menu();
+
+/**
+ * Display page for creating pharmacist
+ * Get data from user
+ * Clear screen
+ *
+ * @return Request to create pharmacist filled with data from user
+ */
+PharmacistCreateRequest display_create_pharmacist_page();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H
