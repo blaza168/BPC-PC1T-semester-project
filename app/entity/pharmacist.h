@@ -1,7 +1,7 @@
 #ifndef SEMESTRAL_PROJECT_PHARMACIST_H
 #define SEMESTRAL_PROJECT_PHARMACIST_H
 
-struct  Pharmacist {
+struct Pharmacist {
     unsigned int id;
     char first_name[21];
     char last_name[21];

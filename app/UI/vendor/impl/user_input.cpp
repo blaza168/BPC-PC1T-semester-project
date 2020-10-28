@@ -3,7 +3,6 @@
 // Private functions declaration
 void flush_stdin();
 
-
 // Public functions implementation
 
 // Private functions implementation

@@ -13,7 +13,7 @@ void init_ui();
 
 /**
  * Print initial welcome screen of this application and pause screen
- * until user presses button
+ * until user presses enter
  * Clear screen after that
  */
 void display_welcome_screen();
