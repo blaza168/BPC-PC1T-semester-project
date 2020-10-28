@@ -22,7 +22,7 @@ MenuOption display_menu() {
     return option;
 }
 
-// Private function implementations
+// Private functions implementations
 void clear_screen() {
 #ifdef unix
     system("clear");

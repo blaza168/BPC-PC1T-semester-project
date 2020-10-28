@@ -3,8 +3,10 @@
 
 struct  Pharmacist {
     unsigned int id;
-    unsigned int pharmacy_id;
+    char first_name[21];
+    char last_name[21];
     char phone[17];
+    unsigned int pharmacy_id;
 };
 
 #endif //SEMESTRAL_PROJECT_PHARMACIST_H
