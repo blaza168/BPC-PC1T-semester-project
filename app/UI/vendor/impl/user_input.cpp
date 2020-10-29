@@ -87,10 +87,9 @@ char* get_address_street() {
 
     while (true) {
         if (!validation_error) {
-            printf("Zadejte ulici: ");
+            display_address_street_initial_banner();
         } else {
-            printf("Nazev je moc kratky.\n");
-            printf("Znovu: ");
+            display_address_street_error_banner();
         }
 
         scanf("%50[^\n]s", buffer);

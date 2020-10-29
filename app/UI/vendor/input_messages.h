@@ -37,6 +37,16 @@ void display_address_city_initial_banner();
 void display_address_city_error_banner();
 
 /**
+ * Display initial banner for Address.street field
+ */
+void display_address_street_initial_banner();
+
+/**
+ * Display error banner for Address.street field
+ */
+void display_address_street_error_banner();
+
+/**
  * Display initial banner for Address.postal_code field
  */
 void display_postal_code_initial_banner();
