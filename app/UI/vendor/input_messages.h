@@ -15,4 +15,25 @@ void display_phone_initial_banner();
  */
 void display_phone_error_banner();
 
+/**
+ * Display initial banner before requesting input
+ * including acceptable formats
+ */
+void display_pharmacy_name_initial_banner();
+
+/**
+ * Display error message
+ */
+void display_pharmacy_name_error_banner();
+
+/**
+ * Display initial banner for Address.city field
+ */
+void display_address_city_initial_banner();
+
+/**
+ * Display error banner for Address.city field
+ */
+void display_address_city_error_banner();
+
 #endif //SEMESTRAL_PROJECT_INPUT_MESSAGES_H

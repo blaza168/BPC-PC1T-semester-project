@@ -21,6 +21,9 @@ char* get_phone_number();
 // Pharmacy
 
 /**
+ * Acceptable format:
+ *      - string with len 3 - 50
+ *
  * @return Name for pharmacy from user
  */
 char* get_pharmacy_name();

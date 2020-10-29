@@ -12,6 +12,6 @@ void display_phone_initial_banner() {
 
 
 void display_phone_error_banner() {
-    printf("Vase tel. cislo bohuzel nevyhovuje pozadavkum.");
+    printf("Vase tel. cislo bohuzel nevyhovuje pozadavkum.\n");
     printf("Zkuste to prosim znovu: ");
 };
