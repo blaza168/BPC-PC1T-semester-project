@@ -81,6 +81,95 @@ char* get_address_city() {
     }
 }
 
+char* get_address_street() {
+    char* buffer = (char*)malloc(sizeof(char) * 51);
+    bool validation_error = false;
+
+    while (true) {
+        if (!validation_error) {
+            printf("Zadejte ulici: ");
+        } else {
+            printf("Nazev je moc kratky.\n");
+            printf("Znovu: ");
+        }
+
+        scanf("%50[^\n]s", buffer);
+        clear_stdin();
+
+        if (strlen(buffer) >= 2) {
+            return buffer;
+        }
+
+        validation_error = true;
+    }
+}
+
+char* get_address_postal_code() {
+    char* buffer = (char*)malloc(sizeof(char) * 6);
+    bool validation_error = false;
+
+    while (true) {
+        if (!validation_error) {
+            display_postal_code_initial_banner();
+        } else {
+            display_postal_code_error_banner();
+        }
+
+        scanf("%50[^\n]s", buffer);
+        clear_stdin();
+
+        if (strlen(buffer) == 5 && validate_only_digits(buffer)) {
+            return buffer;
+        }
+
+        validation_error = true;
+    }
+}
+
+char* get_first_name() {
+    char* buffer = (char*)malloc(sizeof(char) * 6);
+    bool validation_error = false;
+
+    while (true) {
+        if (!validation_error) {
+            display_first_name_initial_banner();
+        } else {
+            display_first_name_error_banner();
+        }
+
+        scanf("%20s", buffer);
+        clear_stdin();
+
+        if (strlen(buffer) >= 2) {
+            return buffer;
+        }
+
+        validation_error = true;
+    }
+}
+
+char* get_last_name() {
+    char* buffer = (char*)malloc(sizeof(char) * 21);
+    bool validation_error = false;
+
+    while (true) {
+        if (!validation_error) {
+            display_last_name_initial_banner();
+        } else {
+            display_last_name_error_banner();
+        }
+
+        scanf("%20s", buffer);
+        clear_stdin();
+
+        if (strlen(buffer) >= 2) {
+            return buffer;
+        }
+
+        validation_error = true;
+    }
+}
+
 // Private functions implementation
 void clear_stdin() {
     while ((getchar()) != '\n');

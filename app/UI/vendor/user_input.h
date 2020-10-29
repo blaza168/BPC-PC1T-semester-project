@@ -1,5 +1,6 @@
 /**
  * Functions for handling user input
+ * Workflow for working with longer values than are allowed has been inspired by MySQL => quietly strip away :)
  */
 #ifndef SEMESTRAL_PROJECT_USER_INPUT_H
 #define SEMESTRAL_PROJECT_USER_INPUT_H

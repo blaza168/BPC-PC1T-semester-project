@@ -36,4 +36,34 @@ void display_address_city_initial_banner();
  */
 void display_address_city_error_banner();
 
+/**
+ * Display initial banner for Address.postal_code field
+ */
+void display_postal_code_initial_banner();
+
+/**
+ * Display error banner for Address.postal_code field
+ */
+void display_postal_code_error_banner();
+
+/**
+ * Display initial banner for pharmacists firstname
+ */
+void display_first_name_initial_banner();
+
+/**
+ * Display error banner for pharmacists firstname
+ */
+void display_first_name_error_banner();
+
+/**
+ * Display initial banner for pharmacists lastname
+ */
+void display_last_name_initial_banner();
+
+/**
+ * Display error banner for pharmacists lastname
+ */
+void display_last_name_error_banner();
+
 #endif //SEMESTRAL_PROJECT_INPUT_MESSAGES_H
