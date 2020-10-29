@@ -1,4 +1,3 @@
-
 /**
  * Functions for handling user input
  */
@@ -13,6 +12,7 @@
  * Acceptable formats:
  *      - +xxx xxx xxx xxx
  *      - xxx xxx xxx
+ *      - digits with len 9
  *
  * @return Valid phone number from user
  */
