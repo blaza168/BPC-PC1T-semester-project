@@ -16,13 +16,13 @@ void display_welcome_screen() {
     clear_screen();
 }
 
-MenuOption display_menu() {
-    enum MenuOption option;
+ApplicationAction display_menu() {
+    enum ApplicationAction option;
 
     return option;
 }
 
-PharmacistCreateRequest display_create_pharmacist_page() {
+PharmacistCreateRequest perform_create_pharmacist_action() {
 
 };
 

@@ -10,7 +10,7 @@ int main() {
     struct Pharmacy pharmacies[20];
     struct Pharmacist pharmacists[20];
     // Program flow variables
-    MenuOption menuOption = MENU;
+    ApplicationAction menuOption = MENU;
 
     // Initialization
     init_ui();
@@ -22,7 +22,7 @@ int main() {
         if (menuOption == MENU) {
             menuOption = display_menu();
         } else if (menuOption == CREATE_PHARMACIST) {
-            PharmacistCreateRequest createRequest = display_create_pharmacist_page();
+            PharmacistCreateRequest createRequest = perform_create_pharmacist_action();
         }
     }
 

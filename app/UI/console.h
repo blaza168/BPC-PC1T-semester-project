@@ -24,7 +24,7 @@ void display_welcome_screen();
  *
  * @return Action that user wants to perform
  */
-MenuOption display_menu();
+ApplicationAction display_menu();
 
 /**
  * Display page for creating pharmacist
@@ -33,6 +33,6 @@ MenuOption display_menu();
  *
  * @return Request to create pharmacist filled with data from user
  */
-PharmacistCreateRequest display_create_pharmacist_page();
+PharmacistCreateRequest perform_create_pharmacist_action();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H

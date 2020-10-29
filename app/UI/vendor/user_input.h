@@ -25,7 +25,31 @@ char* get_phone_number();
  */
 char* get_pharmacy_name();
 
+// Address
 
+/**
+ * Acceptable formats:
+ *      - string with len 2 - 50
+ *
+ * @return char* representing city in address structure
+ */
+char* get_address_city();
+
+/**
+ * Acceptable formats:
+ *      - string with len 2 - 50
+ *
+ * @return char* representing street
+ */
+char* get_address_street();
+
+/**
+ * Acceptable formats:
+ *      - string with len 5 characters
+ *
+ * @return char* representing postal code for address structure
+ */
+char* get_address_postal_code();
 
 
 // Pharmacist
