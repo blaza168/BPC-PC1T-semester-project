@@ -22,10 +22,6 @@ ApplicationAction display_menu() {
     return option;
 }
 
-PharmacistCreateRequest perform_create_pharmacist_action() {
-
-};
-
 // Private functions implementations
 void clear_screen() {
 #ifdef unix

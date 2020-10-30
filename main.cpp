@@ -21,8 +21,6 @@ int main() {
     while (menuOption != EXIT) {
         if (menuOption == MENU) {
             menuOption = display_menu();
-        } else if (menuOption == CREATE_PHARMACIST) {
-            PharmacistCreateRequest createRequest = perform_create_pharmacist_action();
         }
     }
 
