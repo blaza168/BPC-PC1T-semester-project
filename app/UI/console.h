@@ -1,5 +1,6 @@
 #include "constants.h"
 #include "../entity/requests/create/pharmacist_create_request.h"
+#include "../entity/requests/create/pharmacy_create_request.h"
 
 #ifndef SEMESTRAL_PROJECT_CONSOLE_H
 #define SEMESTRAL_PROJECT_CONSOLE_H
@@ -34,5 +35,14 @@ ApplicationAction display_menu();
  * @return Request to create pharmacist filled with data from user
  */
 PharmacistCreateRequest* perform_create_pharmacist_action();
+
+/**
+ * Display page for creating pharmacy
+ * Get data from user
+ * Clear screen
+ *
+ * @return Request to create pharmacist filled with data from user
+ */
+ PharmacyCreateRequest* perform_create_pharmacy_action();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H

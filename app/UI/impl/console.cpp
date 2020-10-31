@@ -4,9 +4,16 @@
 #include "../constants.h"
 #include "../vendor/user_input.h"
 #include "../../entity/requests/create/pharmacist_create_request.h"
+#include "../../entity/requests/create/pharmacy_create_request.h"
 
 // Private functions declaration
 void clear_screen();
+
+/**
+ * Create Address entity from data given by user
+ * @return Pointer to Address structure with filled data
+ */
+Address* perform_address_create_subaction();
 
 // Public functions implementations
 void init_ui() {
@@ -35,7 +42,7 @@ PharmacistCreateRequest* perform_create_pharmacist_action() {
     char* last_name;
     char* phone_number;
 
-    printf("Create pharmacist");
+    printf("Create pharmacist\n");
     printf("-----------------");
 
     first_name = get_first_name();
@@ -53,6 +60,29 @@ PharmacistCreateRequest* perform_create_pharmacist_action() {
     return request;
 }
 
+PharmacyCreateRequest* perform_create_pharmacy_action() {
+    PharmacyCreateRequest* request = (PharmacyCreateRequest*)malloc(sizeof(PharmacyCreateRequest));
+    char* name;
+    char* phone;
+    Address* address;
+
+    printf("Create pharmacy\n");
+    printf("---------------");
+
+    name = get_pharmacy_name();
+    phone = get_phone_number();
+    address = perform_address_create_subaction();
+
+    strcpy(request->name, name);
+    strcpy(request->phone, phone);
+    request->address = address;
+
+    free(name);
+    free(phone);
+
+    return request;
+}
+
 // Private functions implementations
 void clear_screen() {
 #ifdef unix
@@ -60,4 +90,27 @@ void clear_screen() {
 #else
     system("cls");
 #endif
+}
+
+Address* perform_address_create_subaction() {
+    Address* address = (Address*)malloc(sizeof(Address));
+    char* city;
+    char* street;
+    char* postal_code;
+
+    printf("Address:\n");
+
+    city = get_address_city();
+    street = get_address_street();
+    postal_code = get_address_postal_code();
+
+    strcpy(address->city, city);
+    strcpy(address->street, street);
+    strcpy(address->postal_code, postal_code);
+
+    free(city);
+    free(street);
+    free(postal_code);
+
+    return address;
 }
