@@ -1,8 +1,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-#include "../input_messages.h"
-#include "../validation.h"
+#include "../input/input_messages.h"
+#include "../input/validation.h"
 
 // Private functions declaration
 void clear_stdin();
