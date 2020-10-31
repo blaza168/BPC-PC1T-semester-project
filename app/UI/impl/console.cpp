@@ -12,12 +12,17 @@ void init_ui() {
 }
 
 void display_welcome_screen() {
-    printf("Hello");
+
+    printf(" _        __  _                        _        _      __        _         _          _        __            ");
+    printf("| |      ___ | | __ __ _  _ __  _ __   _   ___ | | __ __ _    __| |  __ _ | |_  __ _ | |__    __ _  ____ ___ ");
+    printf("| |     / _ .| |/ // _` || '__|| '_ . | | / __|| |/ // _` |  / _` | / _` || __|/ _` || '_ .  / _` ||_  // _ .");
+    printf("| |____|  __/|   <| (_| || |   | | | || || (__ |   <| (_| | | (_| || (_| || |_| (_| || |_) || (_| | / /|  __/");
+    printf("|______|.___||_|._..__,_||_|   |_| |_||_| .___||_|._..__,_|  .__,_| .__,_| .__|.__,_||_.__/  .__,_|/___|.___|");
     clear_screen();
 }
 
 ApplicationAction display_menu() {
-    enum ApplicationAction option;
+     ApplicationAction option = MENU;
 
     return option;
 }
