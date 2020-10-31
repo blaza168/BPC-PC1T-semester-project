@@ -77,7 +77,7 @@ unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** t
     databaseMetadata->pharmacists_count += 1;
 
     Pharmacist* pharmacy = create_request_to_pharmacist(request);
-    pharmacy->id = databaseMetadata->pharmacies_last_id;
+    pharmacy->id = databaseMetadata->pharmacists_last_id;
 
     *table[databaseMetadata->pharmacists_count - 1] = pharmacy;
 
