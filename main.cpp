@@ -6,9 +6,9 @@
 
 int main() {
     // Application data
-    DatabaseMetadata databaseMetadata = {0,0};
-    Pharmacy pharmacies[20];
-    Pharmacist pharmacists[20];
+    DatabaseMetadata* databaseMetadata = init_db_metadata();
+    Pharmacy** pharmacies = init_pharmacy_space();
+    Pharmacist** pharmacists = init_pharmacist_space();
     // Program flow variables
     ApplicationAction menuOption = MENU;
 
