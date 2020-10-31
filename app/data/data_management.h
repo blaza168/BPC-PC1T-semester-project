@@ -1,6 +1,8 @@
 #include "entity.h"
 #include "../entity/pharmacist.h"
 #include "../entity/pharmacy.h"
+#include "../entity/requests/create/pharmacy_create_request.h"
+#include "../entity/requests/create/pharmacist_create_request.h"
 
 /**
  * Part of application for manipulating with data stored in main
@@ -26,5 +28,35 @@ Pharmacist** init_pharmacist_space();
  * @return pointer to pointers of elements that we need to store
  */
 Pharmacy** init_pharmacy_space();
+
+// CRUD operations
+
+/**
+ * Insert PharmacyCreateRequest into database and assign id to it.
+ * If increment pharmacies_count attribute in DatabaseMetadata struct
+ * If database would overflow, allocate bigger space, copy pointers from old space to new
+ * and change value of database to bigger space
+ * Free request and all unused child fields
+ *
+ * @param request entity to be inserted into "table"
+ * @param table current array of pointers to stored structs
+ * @param databaseMetadata info about all tables
+ * @return assigned id
+ */
+unsigned int insert_pharmacy(PharmacyCreateRequest* request, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Insert PharmacyCreateRequest into database and assign id to it.
+ * If increment pharmacies_count attribute in DatabaseMetadata struct
+ * If database would overflow, allocate bigger space, copy pointers from old space to new
+ * and change value of database to bigger space
+ * Free request and all unused child fields
+ *
+ * @param request entity to be inserted into "table"
+ * @param table current array of pointers to stored structs
+ * @param databaseMetadata info about all tables
+ * @return assigned id
+ */
+unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** table, DatabaseMetadata* databaseMetadata);
 
 #endif //SEMESTRAL_PROJECT_DATA_MANAGEMENT_H
