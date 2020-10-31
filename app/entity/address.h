@@ -2,9 +2,9 @@
 #define SEMESTRAL_PROJECT_ADDRESS_H
 
 struct Address {
-    char city[51];
-    char street[51];
-    char postal_code[6];
+    char* city;
+    char* street;
+    char* postal_code;
 };
 
 #endif //SEMESTRAL_PROJECT_ADDRESS_H
