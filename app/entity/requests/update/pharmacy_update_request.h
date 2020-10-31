@@ -6,8 +6,8 @@
 
 struct PharmacyUpdateRequest {
     unsigned int id;
-    char name[51];
-    char phone[17];
+    char* name;
+    char* phone;
     Address address;
 };
 

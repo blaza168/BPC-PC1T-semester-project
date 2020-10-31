@@ -5,9 +5,9 @@
 
 
 struct PharmacyCreateRequest {
-    char name[51];
-    char phone[17];
-    Address address;
+    char* name;
+    char* phone;
+    Address* address;
 };
 
 #endif //SEMESTRAL_PROJECT_PHARMACY_CREATE_REQUEST_H

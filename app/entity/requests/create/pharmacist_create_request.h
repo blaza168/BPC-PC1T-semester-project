@@ -2,9 +2,9 @@
 #define SEMESTRAL_PROJECT_PHARMACIST_CREATE_REQUEST_H
 
 struct  PharmacistCreateRequest {
-    char first_name[21];
-    char last_name[21];
-    char phone[17];
+    char* first_name;
+    char* last_name;
+    char* phone;
     unsigned int pharmacy_id;
 };
 
