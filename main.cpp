@@ -6,9 +6,9 @@
 
 int main() {
     // Application data
-    struct DatabaseMetadata databaseMetadata = {0,0};
-    struct Pharmacy pharmacies[20];
-    struct Pharmacist pharmacists[20];
+    DatabaseMetadata databaseMetadata = {0,0};
+    Pharmacy pharmacies[20];
+    Pharmacist pharmacists[20];
     // Program flow variables
     ApplicationAction menuOption = MENU;
 
