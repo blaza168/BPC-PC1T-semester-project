@@ -1,6 +1,7 @@
 #include "constants.h"
 #include "../entity/requests/create/pharmacist_create_request.h"
 #include "../entity/requests/create/pharmacy_create_request.h"
+#include "../entity/requests/delete/pharmacist_delete_request.h"
 
 #ifndef SEMESTRAL_PROJECT_CONSOLE_H
 #define SEMESTRAL_PROJECT_CONSOLE_H
@@ -44,5 +45,23 @@ PharmacistCreateRequest* perform_create_pharmacist_action();
  * @return Request to create pharmacist filled with data from user
  */
  PharmacyCreateRequest* perform_create_pharmacy_action();
+
+/**
+ * Display page for deleting pharmacy
+ * Get name of pharmacy which user want to delete
+ * Clear screen
+ *
+ * @return Name of pharmacy that user wants to delete
+ */
+char* perform_delete_pharmacy_action();
+
+/**
+ * Display page for deleting pharmacist
+ * Get first name and last name
+ * Clear screen
+ *
+ * @return PharmacistDeleteRequest filled with data
+ */
+PharmacistDeleteRequest* perform_delete_pharmacist_action();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H
