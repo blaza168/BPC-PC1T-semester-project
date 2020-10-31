@@ -33,6 +33,6 @@ ApplicationAction display_menu();
  *
  * @return Request to create pharmacist filled with data from user
  */
-PharmacistCreateRequest perform_create_pharmacist_action();
+PharmacistCreateRequest* perform_create_pharmacist_action();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H
