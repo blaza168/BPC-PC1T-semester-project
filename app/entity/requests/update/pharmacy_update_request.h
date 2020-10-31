@@ -8,7 +8,7 @@ struct PharmacyUpdateRequest {
     unsigned int id;
     char* name;
     char* phone;
-    Address address;
+    Address* address;
 };
 
 #endif //SEMESTRAL_PROJECT_PHARMACY_UPDATE_REQUEST_H

@@ -5,7 +5,6 @@ struct  PharmacistCreateRequest {
     char* first_name;
     char* last_name;
     char* phone;
-    unsigned int pharmacy_id;
 };
 
 
