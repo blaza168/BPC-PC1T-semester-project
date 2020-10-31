@@ -61,7 +61,7 @@ unsigned int insert_pharmacy(PharmacyCreateRequest* request, Pharmacy*** table, 
 unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** table, DatabaseMetadata* databaseMetadata) {
     // Allocate larger memory if needed
     if (databaseMetadata->pharmacists_count == databaseMetadata->pharmacists_capacity) {
-        databaseMetadata->pharmacies_capacity += 10;
+        databaseMetadata->pharmacists_capacity += 10;
         Pharmacist** buffer = (Pharmacist**)malloc(sizeof(struct Pharmacist*) * databaseMetadata->pharmacists_capacity);
 
         // copy data from old to new
