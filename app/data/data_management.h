@@ -3,6 +3,7 @@
 #include "../entity/pharmacy.h"
 #include "../entity/requests/create/pharmacy_create_request.h"
 #include "../entity/requests/create/pharmacist_create_request.h"
+#include "../entity/requests/identifiers/pharmacist_identifier.h"
 
 /**
  * Part of application for manipulating with data stored in main
@@ -58,5 +59,43 @@ unsigned int insert_pharmacy(PharmacyCreateRequest* request, Pharmacy*** table, 
  * @return assigned id
  */
 unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Search for pharmacist with unique attributes combination
+ *
+ * @param identifier - pharmacist firstname + lastname unique combination
+ * @return pointer to entity or NULL if not found
+ */
+Pharmacist* find_pharmacist(PharmacistIdentifier* identifier, Pharmacist*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Search for pharmacy with specific name
+ *
+ * @param name
+ * @param table
+ * @param databaseMetadata
+ * @return pointer to pharmacy or NULL if not found
+ */
+Pharmacy* find_pharmacy(char* name, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Find pharmacist by id
+ *
+ * @param id
+ * @param table
+ * @param databaseMetadata
+ * @return pointer to entity or NULL if not found
+ */
+Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Find pharmacy by id
+ *
+ * @param id
+ * @param table
+ * @param databaseMetadata
+ * @return pointer to entity or NULL if not found
+ */
+Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
 
 #endif //SEMESTRAL_PROJECT_DATA_MANAGEMENT_H

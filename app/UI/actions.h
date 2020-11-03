@@ -1,7 +1,6 @@
 #include "constants.h"
 #include "../entity/requests/create/pharmacist_create_request.h"
 #include "../entity/requests/create/pharmacy_create_request.h"
-#include "../entity/requests/delete/pharmacist_delete_request.h"
 
 #ifndef SEMESTRAL_PROJECT_CONSOLE_H
 #define SEMESTRAL_PROJECT_CONSOLE_H
@@ -62,6 +61,6 @@ char* perform_delete_pharmacy_action();
  *
  * @return PharmacistDeleteRequest filled with data
  */
-PharmacistDeleteRequest* perform_delete_pharmacist_action();
+PharmacistIdentifier* perform_delete_pharmacist_action();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H

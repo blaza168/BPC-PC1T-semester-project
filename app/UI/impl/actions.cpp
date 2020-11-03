@@ -5,9 +5,9 @@
 #include "../vendor/user_input.h"
 #include "../../entity/requests/create/pharmacist_create_request.h"
 #include "../../entity/requests/create/pharmacy_create_request.h"
+#include "../vendor/utils/print_utils.h"
 
-// Private functions declaration
-void clear_screen();
+// Private function declaration
 
 /**
 * Map action code to ApplicationAction
@@ -106,13 +106,6 @@ PharmacyCreateRequest* perform_create_pharmacy_action() {
 }
 
 // Private functions implementations
-void clear_screen() {
-#ifdef unix
-    system("clear");
-#else
-    system("cls");
-#endif
-}
 
 ApplicationAction map_user_input_to_application_action(int user_input) {
     if (user_input == 1) {
