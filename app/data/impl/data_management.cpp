@@ -6,6 +6,7 @@
 #include "../../entity/pharmacy.h"
 #include "../../entity/requests/create/pharmacy_create_request.h"
 #include "../../entity/requests/create/pharmacist_create_request.h"
+#include "../../entity/requests/identifiers/pharmacist_identifier.h"
 
 #define INITIAL_ENTITY_CAPACITY 20
 
@@ -84,3 +85,46 @@ unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** t
     return databaseMetadata->pharmacists_last_id;
 }
 
+Pharmacist* find_pharmacist(PharmacistIdentifier* identifier, Pharmacist*** table, DatabaseMetadata* databaseMetadata) {
+
+    for (int i = 0; i < databaseMetadata->pharmacists_count; i++) {
+        if (strcmp((*table)[i]->first_name, identifier->first_name) == 0 && strcmp((*table)[i]->last_name, identifier->last_name) == 0) {
+            return *table[i];
+        }
+    }
+
+    return NULL;
+}
+
+Pharmacy* find_pharmacy(char* name, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+
+    for (int i = 0; i < databaseMetadata->pharmacies_count; i++) {
+        if (strcpy((*table)[i]->name, name) == 0) {
+            return *table[i];
+        }
+    }
+
+    return NULL;
+}
+
+Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata) {
+
+    for (int i = 0; databaseMetadata->pharmacists_count; i++) {
+        if ((*table)[i]->id == id) {
+            return *table[i];
+        }
+    }
+
+    return NULL;
+}
+
+Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+
+    for (int i = 0; databaseMetadata->pharmacies_count; i++) {
+        if ((*table)[i]->id == id) {
+            return *table[i];
+        }
+    }
+
+    return NULL;
+}
