@@ -10,6 +10,12 @@
 void clear_screen();
 
 /**
+* Map data given from user 
+* @return Pointer to ApplocationAction structure 
+*/
+ApplicationAction map_user_input_to_application_action(int user_input);
+
+/**
  * Create Address entity from data given by user
  * @return Pointer to Address structure with filled data
  */
@@ -27,15 +33,29 @@ void display_welcome_screen() {
     printf(" | |_) || '_  . / _` || '__|| '_ ` _ .  / _` | / __|| | / _ ./ __|   | | | | / _` || __|/ _` || '_ .  / _` |/ __| / _ .\n");
     printf(" |  __/ | | | || (_| || |   | | | | | || (_| || (__ | ||  __/.__ .   | |_| || (_| || |_| (_| || |_) || (_| |.__ .|  __/\n");
     printf(" |_|    |_| |_| .__,_||_|   |_| |_| |_| .__,_| .___||_| .___||___/   |____/  .__,_| .__|.__,_||_.__/  .__,_||___/ .___|\n\n");
-    printf("Press any key to continue"); // This informs the user what he should do next
+    printf("Press Enter to continue"); 
     getchar();
     clear_screen();
 }
 
 ApplicationAction display_menu() {
      ApplicationAction option = MENU;
+     int vstup = 0;
 
-    return option;
+     printf(" ____  ____  ____  ____ \n");
+     printf("||m ||||e ||||n ||||u ||\n");
+     printf("||__||||__||||__||||__||\n\n");
+     printf("Choose number of action you would like to perform:\n\n");
+     printf("SEARCH FOR:                   CREATE:\n");
+     printf("Pharmacist (1)                Pharmacist (3)\n");
+     printf("Pharmacy (2)                  Pharmacy (4)\n\n");
+     printf("EDIT:                         DELETE:\n");
+     printf("Pharmacist (5)                Pharmacist (7)\n");
+     printf("Pharmacy (6)                  Pharmacy (8)\n");
+     printf("ASSIGN:                       Pharmacist to Pharmacy (9)\n");
+     scanf("%d", &vstup);
+
+     return map_user_input_to_application_action(vstup);
 }
 
 PharmacistCreateRequest* perform_create_pharmacist_action() {
@@ -92,6 +112,36 @@ void clear_screen() {
 #else
     system("cls");
 #endif
+}
+
+ApplicationAction map_user_input_to_application_action(int user_input) {
+    if (vstup = 1) {
+        return SEARCH_FOR_PHARMACIST;
+    }
+    if (vstup = 2) {
+        return  SEARCH_FOR_PHARMACY;
+    }
+    if (vstup = 3) {
+        return CREATE_PHARMACIST;
+    }
+    if (vstup = 4) {
+        return  CREATE_PHARMACY;
+    }
+    if (vstup = 5) {
+        return EDIT_PHARMACIST;
+    }
+    if (vstup = 6) {
+        return  EDIT_PHARMACY;
+    }
+    if (vstup = 7) {
+        return DELETE_PHARMACIST;
+    }
+    if (vstup = 8) {
+        return  DELETE_PHARMACY;
+    }
+    if (vstup = 9) {
+        return ASSIGN_PHARMACIST_TO_PHARMACY;
+    }
 }
 
 Address* perform_address_create_subaction() {
