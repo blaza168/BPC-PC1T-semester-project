@@ -10,8 +10,8 @@
 void clear_screen();
 
 /**
-* Map data given from user 
-* @return Pointer to ApplocationAction structure 
+* Map action code to ApplicationAction
+* @return ApplicationAction
 */
 ApplicationAction map_user_input_to_application_action(int user_input);
 
@@ -40,7 +40,7 @@ void display_welcome_screen() {
 
 ApplicationAction display_menu() {
      ApplicationAction option = MENU;
-     int vstup = 0;
+     int action_code = 0;
 
      printf(" ____  ____  ____  ____ \n");
      printf("||m ||||e ||||n ||||u ||\n");
@@ -53,9 +53,9 @@ ApplicationAction display_menu() {
      printf("Pharmacist (5)                Pharmacist (7)\n");
      printf("Pharmacy (6)                  Pharmacy (8)\n");
      printf("ASSIGN:                       Pharmacist to Pharmacy (9)\n");
-     scanf("%d", &vstup);
+     scanf("%d", &action_code);
 
-     return map_user_input_to_application_action(vstup);
+     return map_user_input_to_application_action(action_code);
 }
 
 PharmacistCreateRequest* perform_create_pharmacist_action() {
@@ -115,33 +115,35 @@ void clear_screen() {
 }
 
 ApplicationAction map_user_input_to_application_action(int user_input) {
-    if (vstup = 1) {
+    if (user_input == 1) {
         return SEARCH_FOR_PHARMACIST;
     }
-    if (vstup = 2) {
+    if (user_input == 2) {
         return  SEARCH_FOR_PHARMACY;
     }
-    if (vstup = 3) {
+    if (user_input == 3) {
         return CREATE_PHARMACIST;
     }
-    if (vstup = 4) {
+    if (user_input == 4) {
         return  CREATE_PHARMACY;
     }
-    if (vstup = 5) {
+    if (user_input == 5) {
         return EDIT_PHARMACIST;
     }
-    if (vstup = 6) {
+    if (user_input == 6) {
         return  EDIT_PHARMACY;
     }
-    if (vstup = 7) {
+    if (user_input == 7) {
         return DELETE_PHARMACIST;
     }
-    if (vstup = 8) {
+    if (user_input == 8) {
         return  DELETE_PHARMACY;
     }
-    if (vstup = 9) {
+    if (user_input == 9) {
         return ASSIGN_PHARMACIST_TO_PHARMACY;
     }
+
+    return MENU;
 }
 
 Address* perform_address_create_subaction() {
