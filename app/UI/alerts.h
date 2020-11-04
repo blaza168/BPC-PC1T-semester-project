@@ -28,7 +28,17 @@ void display_pharmacist_creation_success_alert(Pharmacist* pharmacist);
  */
 void display_pharmacist_creation_error_alert();
 
+/**
+ * Display alert after successful assignment
+ */
+void display_assign_success_alert();
 
+/**
+ * Display alert after unsuccessful assignment
+ *
+ * @param error message to me displayed to user (NOT WHOLE ALERT!)
+ */
+void display_assign_error_alert(char* error_message);
 
 
 #endif //SEMESTRAL_PROJECT_ALERTS_H

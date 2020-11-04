@@ -6,6 +6,7 @@
 #include "../../entity/requests/create/pharmacist_create_request.h"
 #include "../../entity/requests/create/pharmacy_create_request.h"
 #include "../vendor/utils/print_utils.h"
+#include "../../entity/requests/update/pharmacist_to_pharmacy_request.h"
 
 // Private function declaration
 
@@ -60,47 +61,43 @@ ApplicationAction display_menu() {
 
 PharmacistCreateRequest* perform_create_pharmacist_action() {
     PharmacistCreateRequest* request = (PharmacistCreateRequest*)malloc(sizeof(PharmacistCreateRequest));
-    char* first_name;
-    char* last_name;
-    char* phone_number;
 
     printf("Create pharmacist\n");
     printf("-----------------");
 
-    first_name = get_first_name();
-    last_name = get_last_name();
-    phone_number = get_phone_number();
+    request->first_name = get_first_name();
+    request->last_name = get_last_name();
+    request->phone = get_phone_number();
 
-    strcpy(request->first_name, first_name);
-    strcpy(request->last_name, last_name);
-    strcpy(request->phone, phone_number);
-
-    free(first_name);
-    free(last_name);
-    free(phone_number);
 
     return request;
 }
 
 PharmacyCreateRequest* perform_create_pharmacy_action() {
     PharmacyCreateRequest* request = (PharmacyCreateRequest*)malloc(sizeof(PharmacyCreateRequest));
-    char* name;
-    char* phone;
-    Address* address;
 
     printf("Create pharmacy\n");
     printf("---------------");
 
-    name = get_pharmacy_name();
-    phone = get_phone_number();
-    address = perform_address_create_subaction();
+    request->name = get_pharmacy_name();
+    request->phone = get_phone_number();
+    request->address = perform_address_create_subaction();
 
-    strcpy(request->name, name);
-    strcpy(request->phone, phone);
-    request->address = address;
 
-    free(name);
-    free(phone);
+    return request;
+}
+
+PharmacistToPharmacyRequest* perform_assign_action() {
+    PharmacistToPharmacyRequest* request = (PharmacistToPharmacyRequest*)malloc(sizeof(PharmacistToPharmacyRequest));
+    PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
+
+    printf("Assign pharmacist to pharmacy:\n");
+
+    request->pharmacy_name = get_pharmacy_name();
+    identifier->first_name = get_first_name();
+    identifier->last_name = get_last_name();
+
+    request->pharmacistIdentifier = identifier;
 
     return request;
 }
@@ -141,23 +138,12 @@ ApplicationAction map_user_input_to_application_action(int user_input) {
 
 Address* perform_address_create_subaction() {
     Address* address = (Address*)malloc(sizeof(Address));
-    char* city;
-    char* street;
-    char* postal_code;
 
     printf("Address:\n");
 
-    city = get_address_city();
-    street = get_address_street();
-    postal_code = get_address_postal_code();
-
-    strcpy(address->city, city);
-    strcpy(address->street, street);
-    strcpy(address->postal_code, postal_code);
-
-    free(city);
-    free(street);
-    free(postal_code);
+    address->city = get_address_city();
+    address->street = get_address_street();
+    address->postal_code = get_address_postal_code();
 
     return address;
 }

@@ -64,6 +64,32 @@ int main() {
             free_pharmacist_creation_entities(identifier, request);
 
             menuOption = MENU;
+        } else if (menuOption == ASSIGN_PHARMACIST_TO_PHARMACY) {
+            PharmacistToPharmacyRequest* request = perform_assign_action();
+            Pharmacist* pharmacist = find_pharmacist(request->pharmacistIdentifier, &pharmacists, databaseMetadata);
+            Pharmacy* pharmacy = find_pharmacy(request->pharmacy_name, &pharmacies, databaseMetadata);
+
+            // check missing entities
+            if (!pharmacist) {
+                char* error_msg = (char*)malloc(sizeof(char) * 50);
+                strcpy(error_msg, "Pharmacist cannot be found.");
+                display_assign_error_alert(error_msg);
+                free(error_msg);
+                menuOption = MENU;
+                continue;
+            } else if (!pharmacy) {
+                char* error_msg = (char*)malloc(sizeof(char) * 50);
+                strcpy(error_msg, "Pharmacy cannot be found.");
+                display_assign_error_alert(error_msg);
+                free(error_msg);
+                menuOption = MENU;
+                continue;
+            }
+
+            pharmacist->pharmacy_id = pharmacy->id;
+            display_assign_success_alert();
+
+            menuOption = MENU;
         }
     }
 
