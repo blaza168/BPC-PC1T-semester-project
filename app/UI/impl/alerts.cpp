@@ -2,7 +2,6 @@
 #include "../vendor/utils/print_utils.h"
 #include "../../entity/pharmacy.h"
 #include "../../entity/pharmacist.h"
-#include "../../entity/address.h"
 #include "../vendor/utils/stdin.h"
 
 void display_pharmacy_creation_success_alert(Pharmacy* pharmacy) {
@@ -18,7 +17,6 @@ void display_pharmacy_creation_success_alert(Pharmacy* pharmacy) {
 }
 
 void display_pharmacy_creation_error_alert() {
-	printf("Creation of pharmacy was not successful.\n");
 	printf("This pharmacy is already registered in this system.\n\n");
 	printf("Press Enter to continue");
 	clear_stdin();
@@ -37,7 +35,6 @@ void display_pharmacist_creation_success_alert(Pharmacist* pharmacist) {
 }
 
 void display_pharmacist_creation_error_alert() {
-	printf("Creation of pharmacist was not successful.\n");
 	printf("This pharmacist is already registered in this system.\n\n");
 	printf("Press Enter to continue");
 	clear_stdin();
