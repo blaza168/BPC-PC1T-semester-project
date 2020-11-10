@@ -13,6 +13,7 @@
  * Acceptable formats:
  *      - +xxx xxx xxx xxx
  *      - xxx xxx xxx
+ *		- xxxxxxxxx
  *      - digits with len 9
  *
  * @return Valid phone number from user
