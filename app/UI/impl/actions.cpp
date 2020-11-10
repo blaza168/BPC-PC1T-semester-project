@@ -7,6 +7,7 @@
 #include "../../entity/requests/create/pharmacy_create_request.h"
 #include "../vendor/utils/print_utils.h"
 #include "../../entity/requests/update/pharmacist_to_pharmacy_request.h"
+#include "../vendor/utils/stdin.h"
 
 // Private function declaration
 
@@ -34,8 +35,8 @@ void display_welcome_screen() {
     printf(" | |_) || '_  . / _` || '__|| '_ ` _ .  / _` | / __|| | / _ ./ __|   | | | | / _` || __|/ _` || '_ .  / _` |/ __| / _ .\n");
     printf(" |  __/ | | | || (_| || |   | | | | | || (_| || (__ | ||  __/.__ .   | |_| || (_| || |_| (_| || |_) || (_| |.__ .|  __/\n");
     printf(" |_|    |_| |_| .__,_||_|   |_| |_| |_| .__,_| .___||_| .___||___/   |____/  .__,_| .__|.__,_||_.__/  .__,_||___/ .___|\n\n");
-    printf("Press Enter to continue"); 
-    getchar();
+    printf("Press Enter to continue");
+    clear_stdin();
     clear_screen();
 }
 
@@ -55,6 +56,7 @@ ApplicationAction display_menu() {
      printf("Pharmacy (6)                  Pharmacy (8)\n");
      printf("ASSIGN:                       Pharmacist to Pharmacy (9)\n");
      scanf("%d", &action_code);
+     clear_stdin();
 
      return map_user_input_to_application_action(action_code);
 }
@@ -77,7 +79,7 @@ PharmacyCreateRequest* perform_create_pharmacy_action() {
     PharmacyCreateRequest* request = (PharmacyCreateRequest*)malloc(sizeof(PharmacyCreateRequest));
 
     printf("Create pharmacy\n");
-    printf("---------------");
+    printf("---------------\n");
 
     request->name = get_pharmacy_name();
     request->phone = get_phone_number();

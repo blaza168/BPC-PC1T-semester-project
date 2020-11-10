@@ -3,6 +3,7 @@
 #include "../../entity/pharmacy.h"
 #include "../../entity/pharmacist.h"
 #include "../../entity/address.h"
+#include "../vendor/utils/stdin.h"
 
 void display_pharmacy_creation_success_alert(Pharmacy* pharmacy) {
 	printf("Creation of pharmacy was successful.\n\n");
@@ -12,7 +13,7 @@ void display_pharmacy_creation_success_alert(Pharmacy* pharmacy) {
 	printf("Street: %s\n", pharmacy->address->street);
 	printf("City: %s\n", pharmacy->address->city);
 	printf("Postal code: %s\n", pharmacy->address->postal_code);
-	getchar();
+	clear_stdin();
 	clear_screen();
 }
 
@@ -20,7 +21,7 @@ void display_pharmacy_creation_error_alert() {
 	printf("Creation of pharmacy was not successful.\n");
 	printf("This pharmacy is already registered in this system.\n\n");
 	printf("Press Enter to continue");
-	getchar();
+	clear_stdin();
 	clear_screen();
 }
 
@@ -31,7 +32,7 @@ void display_pharmacist_creation_success_alert(Pharmacist* pharmacist) {
 	printf("First name: %s\n", pharmacist->first_name);
 	printf("Last name: %s\n", pharmacist->last_name);
 	printf("Phone number: %s\n", pharmacist->phone);
-	getchar();
+	clear_stdin();
 	clear_screen();
 }
 
@@ -39,7 +40,7 @@ void display_pharmacist_creation_error_alert() {
 	printf("Creation of pharmacist was not successful.\n");
 	printf("This pharmacist is already registered in this system.\n\n");
 	printf("Press Enter to continue");
-	getchar();
+	clear_stdin();
 	clear_screen();
 }
 

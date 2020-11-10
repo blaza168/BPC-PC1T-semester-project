@@ -41,7 +41,7 @@ int main() {
             Pharmacy* pharmacy = find_pharmacy_by_id(id, &pharmacies, databaseMetadata);
             display_pharmacy_creation_success_alert(pharmacy);
 
-            free(request);
+            menuOption = MENU;
         } else if (menuOption == CREATE_PHARMACIST) {
             PharmacistCreateRequest* request = perform_create_pharmacist_action();
 
