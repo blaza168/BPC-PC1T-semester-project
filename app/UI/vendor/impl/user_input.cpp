@@ -3,9 +3,8 @@
 #include "string.h"
 #include "../input/input_messages.h"
 #include "../input/validation.h"
+#include "../utils/stdin.h"
 
-// Private functions declaration
-void clear_stdin();
 
 // Public functions implementation
 
@@ -20,6 +19,7 @@ char* get_phone_number() {
             display_phone_error_banner();
         }
 
+        clear_stdin();
         scanf("%16[^\n]s", buffer);
         clear_stdin();
 
@@ -47,6 +47,7 @@ char* get_pharmacy_name() {
             display_pharmacy_name_error_banner();
         }
 
+        clear_stdin();
         scanf("%50[^\n]s", buffer);
         clear_stdin();
 
@@ -70,6 +71,7 @@ char* get_address_city() {
             display_address_city_error_banner();
         }
 
+        clear_stdin();
         scanf("%50[^\n]s", buffer);
         clear_stdin();
 
@@ -92,6 +94,7 @@ char* get_address_street() {
             display_address_street_error_banner();
         }
 
+        clear_stdin();
         scanf("%50[^\n]s", buffer);
         clear_stdin();
 
@@ -114,6 +117,7 @@ char* get_address_postal_code() {
             display_postal_code_error_banner();
         }
 
+        clear_stdin();
         scanf("%50[^\n]s", buffer);
         clear_stdin();
 
@@ -136,6 +140,7 @@ char* get_first_name() {
             display_first_name_error_banner();
         }
 
+        clear_stdin();
         scanf("%20s", buffer);
         clear_stdin();
 
@@ -158,6 +163,7 @@ char* get_last_name() {
             display_last_name_error_banner();
         }
 
+        clear_stdin();
         scanf("%20s", buffer);
         clear_stdin();
 
@@ -168,8 +174,3 @@ char* get_last_name() {
         validation_error = true;
     }
 }
-
-// Private functions implementation
-void clear_stdin() {
-    while ((getchar()) != '\n');
-};
