@@ -9,7 +9,7 @@
 // Public functions implementation
 
 char* get_phone_number() {
-    char* buffer = (char*)malloc(sizeof(char) * 17);
+    char* buffer = (char*)malloc(sizeof(char) * 13);
     bool validation_error = false;
 
     while (true) {
@@ -24,7 +24,7 @@ char* get_phone_number() {
 
         if (strlen(buffer) == 9 && validate_only_digits(buffer)) {
             return buffer;
-        } else if (strlen(buffer) == 16 && validate_phone_number_with_prefix(buffer)) {
+        } else if (strlen(buffer) == 12 && validate_phone_number_with_prefix(buffer)) {
             return buffer;
         } else if (strlen(buffer) == 11 && validate_phone_number_without_prefix(buffer)) {
             return buffer;

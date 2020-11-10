@@ -19,7 +19,7 @@ bool validate_phone_number_without_prefix(char* buffer) {
 
     for (int i = 1; i < format_len; i += 4) {
         // validate spaces between blocks
-        if (buffer[i - 1] != ' ') {
+        if (buffer[i - 1] != ' ' && i != 1) {
             return false;
         }
         // validate block of three digits
@@ -35,20 +35,20 @@ bool validate_phone_number_without_prefix(char* buffer) {
 
 // +xxx xxx xxx xxx
 bool validate_phone_number_with_prefix(char* buffer) {
-    const unsigned short format_len = 16;
+    const unsigned short format_len = 12;
 
     //check +xxx part
     if (buffer[0] != '+') {
         return false;
     }
 
-    for (int i = 1; i < 5; i++) {
+    for (int i = 1; i < 4; i++) {
         if (!isdigit(buffer[i])) {
             return false;
         }
     }
 
-    // check xxx xxx xxx part
+    // check xxx xxx part
     for (int i = 5; i < format_len; i += 4) {
         // validate spaces between blocks
         if (buffer[i - 1] != ' ') {

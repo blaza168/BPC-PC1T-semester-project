@@ -57,6 +57,7 @@ ApplicationAction display_menu() {
      printf("ASSIGN:                       Pharmacist to Pharmacy (9)\n");
      scanf("%d", &action_code);
      clear_stdin();
+     clear_screen();
 
      return map_user_input_to_application_action(action_code);
 }
