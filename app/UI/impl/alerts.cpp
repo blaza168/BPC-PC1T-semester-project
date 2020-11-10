@@ -42,3 +42,11 @@ void display_pharmacist_creation_error_alert() {
 	getchar();
 	clear_screen();
 }
+
+void display_assign_success_alert() {
+
+}
+
+void display_assign_error_alert(char* error_message) {
+
+}
