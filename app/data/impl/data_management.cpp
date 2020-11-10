@@ -128,3 +128,11 @@ Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetada
 
     return NULL;
 }
+
+void delete_pharmacist_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+
+}
+
+void delete_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+
+}

@@ -98,4 +98,24 @@ Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, Database
  */
 Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
 
+/**
+ * Completely remove pharmacist with all child references
+ * Shift remaining pointers after deleted entity one to left to fill blank space
+ *
+ * @param id - Id of pharmacist that should be deleted
+ * @param table
+ * @param databaseMetadata
+ */
+void delete_pharmacist_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Completely remove pharmacy with all child references
+ * Shift remaining pointers after deleted entity one to left to fill blank space
+ *
+ * @param id - Id of pharmacy that should be deleted
+ * @param table
+ * @param databaseMetadata
+ */
+void delete_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
+
 #endif //SEMESTRAL_PROJECT_DATA_MANAGEMENT_H

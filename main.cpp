@@ -90,6 +90,10 @@ int main() {
             display_assign_success_alert();
 
             menuOption = MENU;
+        } else if (menuOption == DELETE_PHARMACIST) {
+
+        } else if (menuOption == DELETE_PHARMACY) {
+
         }
     }
 
