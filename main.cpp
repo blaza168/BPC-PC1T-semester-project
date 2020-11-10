@@ -8,7 +8,6 @@
 #include "app/UI/constants.h"
 #include "app/entity/requests/identifiers/pharmacist_identifier.h"
 
-void free_pharmacist_creation_entities(PharmacistIdentifier* identifier, PharmacistCreateRequest* request);
 
 int main() {
     // Application data
@@ -47,6 +46,8 @@ int main() {
 
             // TODO: move to converter
             PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
+            identifier->first_name = (char*)malloc(sizeof(char) * strlen(request->first_name) + 1);
+            identifier->last_name = (char*)malloc(sizeof(char) * strlen(request->last_name) + 1);
             strcpy(identifier->first_name, request->first_name);
             strcpy(identifier->last_name, request->last_name);
 
@@ -61,7 +62,10 @@ int main() {
             Pharmacist* pharmacist = find_pharmacist_by_id(id, &pharmacists, databaseMetadata);
 
             display_pharmacist_creation_success_alert(pharmacist);
-            free_pharmacist_creation_entities(identifier, request);
+
+            free(identifier->first_name);
+            free(identifier->last_name);
+            free(identifier);
 
             menuOption = MENU;
         } else if (menuOption == ASSIGN_PHARMACIST_TO_PHARMACY) {
@@ -98,15 +102,4 @@ int main() {
     }
 
     return 0;
-}
-
-void free_pharmacist_creation_entities(PharmacistIdentifier* identifier, PharmacistCreateRequest* request) {
-    free(request->first_name);
-    free(request->last_name);
-    free(request->phone);
-    free(request);
-
-    free(identifier->first_name);
-    free(identifier->last_name);
-    free(identifier);
 }
