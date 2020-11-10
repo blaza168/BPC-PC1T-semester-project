@@ -11,7 +11,7 @@ void display_pharmacy_creation_success_alert(Pharmacy* pharmacy) {
 	printf("Phone number: %s\n", pharmacy->phone);
 	printf("Street: %s\n", pharmacy->address->street);
 	printf("City: %s\n", pharmacy->address->city);
-	printf("Postal code: %d\n", pharmacy->address->postal_code);
+	printf("Postal code: %s\n", pharmacy->address->postal_code);
 	getchar();
 	clear_screen();
 }
@@ -27,7 +27,7 @@ void display_pharmacy_creation_error_alert() {
 void display_pharmacist_creation_success_alert(Pharmacist* pharmacist) {
 	printf("Creation of pharmacist was successful.\n\n");
 	printf("ID: %d\n", pharmacist->id);
-	printf("Pharmacy ID: %s\n", pharmacist->pharmacy_id);
+	printf("Pharmacy ID: %d\n", pharmacist->pharmacy_id);
 	printf("First name: %s\n", pharmacist->first_name);
 	printf("Last name: %s\n", pharmacist->last_name);
 	printf("Phone number: %s\n", pharmacist->phone);
