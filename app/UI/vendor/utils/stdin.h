@@ -1,0 +1,6 @@
+#ifndef SEMESTRAL_PROJECT_STDIN_H
+#define SEMESTRAL_PROJECT_STDIN_H
+
+void clear_stdin();
+
+#endif //SEMESTRAL_PROJECT_STDIN_H
