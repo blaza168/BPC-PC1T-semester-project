@@ -1,5 +1,5 @@
-#include "stdlib.h"
-#include "string.h"
+#include <stdlib.h>
+#include <string.h>
 #include "../entity.h"
 #include "../vendor/convertor/entity_convertor.h"
 #include "../../entity/pharmacist.h"
@@ -7,9 +7,31 @@
 #include "../../entity/requests/create/pharmacy_create_request.h"
 #include "../../entity/requests/create/pharmacist_create_request.h"
 #include "../../entity/requests/identifiers/pharmacist_identifier.h"
+#include "../../entity/requests/update/pharmacy_update_request.h"
+#include "../../entity/requests/update/pharmacist_update_request.h"
 
 #define INITIAL_ENTITY_CAPACITY 20
 
+// Private functions declaration
+/**
+ * @param id
+ * @param table
+ * @param databaseMetadata
+ * @param index|NULL index of entity in holding list will be set here.
+ * @return
+ */
+Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* index);
+
+/**
+ * @param id
+ * @param table
+ * @param databaseMetadata
+ * @param index|NULL index of entity in holding list will be set here.
+ * @return
+ */
+Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata, unsigned int* index);
+
+// public function implementation
 DatabaseMetadata* init_db_metadata() {
     DatabaseMetadata* databaseMetadata = (DatabaseMetadata*)malloc(sizeof(DatabaseMetadata));
 
@@ -99,7 +121,9 @@ Pharmacist* find_pharmacist(PharmacistIdentifier* identifier, Pharmacist*** tabl
 Pharmacy* find_pharmacy(char* name, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
 
     for (int i = 0; i < databaseMetadata->pharmacies_count; i++) {
-        if (strcpy((*table)[i]->name, name) == 0) {
+        char* pharmacy_name = (*table)[i]->name;
+        int cmp_result = strcmp(pharmacy_name, name);
+        if (cmp_result == 0) {
             return *table[i];
         }
     }
@@ -108,31 +132,70 @@ Pharmacy* find_pharmacy(char* name, Pharmacy*** table, DatabaseMetadata* databas
 }
 
 Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata) {
-
-    for (int i = 0; databaseMetadata->pharmacists_count; i++) {
-        if ((*table)[i]->id == id) {
-            return *table[i];
-        }
-    }
-
-    return NULL;
+    return find_pharmacist_by_id(id, table, databaseMetadata, NULL);
 }
 
 Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
-
-    for (int i = 0; databaseMetadata->pharmacies_count; i++) {
-        if ((*table)[i]->id == id) {
-            return *table[i];
-        }
-    }
-
-    return NULL;
+    return find_pharmacy_by_id(id, table, databaseMetadata, NULL);
 }
 
 void delete_pharmacist_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+    unsigned int pharmacist_index;
+
+    find_pharmacy_by_id(id, table, databaseMetadata, &pharmacist_index);
+
 
 }
 
 void delete_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+    unsigned int pharmacy_index;
 
+    find_pharmacy_by_id(id, table, databaseMetadata, &pharmacy_index);
+
+}
+
+void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy) {
+    pharmacy->phone = request->phone;
+    pharmacy->name = request->name;
+    pharmacy->address = request->address;
+
+    free(request);
+}
+
+void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist) {
+    pharmacist->phone = request->phone;
+    pharmacist->last_name = request->last_name;
+    pharmacist->first_name = request->first_name;
+
+    free(request->last_name);
+    free(request->first_name);
+    free(request->phone);
+    free(request);
+}
+
+// Private functions implementation
+Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* index) {
+    for (int i = 0; databaseMetadata->pharmacists_count; i++) {
+        if ((*table)[i]->id == id) {
+            if (index) {
+                *index = i;
+            }
+            return *table[i];
+        }
+    }
+
+    return NULL;
+}
+
+Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata, unsigned int* index) {
+    for (int i = 0; databaseMetadata->pharmacies_count; i++) {
+        if ((*table)[i]->id == id) {
+            if (index) {
+                *index = i;
+            }
+            return *table[i];
+        }
+    }
+
+    return NULL;
 }

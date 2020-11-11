@@ -98,6 +98,65 @@ int main() {
 
         } else if (menuOption == DELETE_PHARMACY) {
 
+        } else if (menuOption == EDIT_PHARMACY) {
+            PharmacyUpdateRequest* request = perform_update_pharmacy_action();
+            Pharmacy* pharmacy = find_pharmacy_by_id(request->id, &pharmacies, databaseMetadata);
+
+            if (!pharmacy) {
+                display_pharmacy_not_found_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            update_pharmacy(request, pharmacy);
+            display_pharmacy_update_success_alert();
+            menuOption = MENU;
+        } else if (menuOption == EDIT_PHARMACIST) {
+            PharmacistUpdateRequest* request = perform_update_pharmacist_action();
+            Pharmacist* pharmacist = find_pharmacist_by_id(request->id, &pharmacists, databaseMetadata);
+
+            if (!pharmacist) {
+                display_pharmacist_not_found_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            update_pharmacist(request, pharmacist);
+            display_pharmacist_not_found_alert();
+            menuOption = MENU;
+        } else if (menuOption == SEARCH_FOR_PHARMACIST) {
+            PharmacistIdentifier* identifier = perform_pharmacist_detail_action();
+            Pharmacist* pharmacist = find_pharmacist(identifier, &pharmacists, databaseMetadata);
+
+            if (!pharmacist) {
+                display_pharmacist_not_found_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            Pharmacy* pharmacy = find_pharmacy_by_id(pharmacist->pharmacy_id, &pharmacies, databaseMetadata);
+
+            display_pharmacist_detail_alert(pharmacist, pharmacy);
+
+            free(identifier->first_name);
+            free(identifier->last_name);
+            free(identifier);
+
+            menuOption = MENU;
+        } else if (menuOption == SEARCH_FOR_PHARMACY) {
+            char* pharmacy_name = perform_pharmacy_detail_action();
+            Pharmacy* pharmacy = find_pharmacy(pharmacy_name, &pharmacies, databaseMetadata);
+
+            if (!pharmacy) {
+                display_pharmacy_not_found_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            display_pharmacy_detail_alert(pharmacy);
+
+            free(pharmacy_name);
+            menuOption = MENU;
         }
     }
 

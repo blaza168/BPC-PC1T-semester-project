@@ -40,5 +40,37 @@ void display_assign_success_alert();
  */
 void display_assign_error_alert(char* error_message);
 
+/**
+ * Display alert if pharmacy cannot be found
+ */
+void display_pharmacy_not_found_alert();
+
+/**
+ * Display alert if pharmacist cannot be found
+ */
+void display_pharmacist_not_found_alert();
+
+/**
+ * Display alert after successful pharmacy update
+ */
+void display_pharmacy_update_success_alert();
+
+/**
+ * Display alert after successful pharmacist update
+ */
+void display_pharmacist_update_success_alert();
+
+/**
+ * Display pharmacy details
+ */
+void display_pharmacy_detail_alert(Pharmacy* pharmacy);
+
+/**
+ * Display pharmacist details
+ *
+ * @param pharmacy - associated pharmacy
+ */
+void display_pharmacist_detail_alert(Pharmacist* pharmacist, Pharmacy* pharmacy);
+
 
 #endif //SEMESTRAL_PROJECT_ALERTS_H

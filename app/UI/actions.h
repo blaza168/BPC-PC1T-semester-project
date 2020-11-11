@@ -2,6 +2,8 @@
 #include "../entity/requests/create/pharmacist_create_request.h"
 #include "../entity/requests/create/pharmacy_create_request.h"
 #include "../entity/requests/update/pharmacist_to_pharmacy_request.h"
+#include "../entity/requests/update/pharmacy_update_request.h"
+#include "../entity/requests/update/pharmacist_update_request.h"
 
 #ifndef SEMESTRAL_PROJECT_CONSOLE_H
 #define SEMESTRAL_PROJECT_CONSOLE_H
@@ -70,5 +72,35 @@ PharmacistIdentifier* perform_delete_pharmacist_action();
  * @return
  */
 PharmacistToPharmacyRequest* perform_assign_action();
+
+/**
+ * Display page for updating pharmacy
+ * Get all necessary data from user
+ *
+ * @return Data from user mapped to entity
+ */
+PharmacyUpdateRequest* perform_update_pharmacy_action();
+
+/**
+ * Display page for updating pharmacist
+ * Get all necessary data from user
+ *
+ * @return Data from user mapped to entity
+ */
+PharmacistUpdateRequest* perform_update_pharmacist_action();
+
+/**
+ * Display page for getting pharmacist detail identifiers
+ *
+ * @return Pharmacist identifiers
+ */
+PharmacistIdentifier* perform_pharmacist_detail_action();
+
+/**
+ * Display page for getting pharmacy details identifier
+ *
+ * @return pharmacy name
+ */
+char* perform_pharmacy_detail_action();
 
 #endif //SEMESTRAL_PROJECT_CONSOLE_H
