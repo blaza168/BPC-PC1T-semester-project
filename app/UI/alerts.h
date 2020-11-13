@@ -63,7 +63,7 @@ void display_pharmacist_update_success_alert();
 /**
  * Display pharmacy details
  */
-void display_pharmacy_detail_alert(Pharmacy* pharmacy);
+void display_pharmacy_detail_alert(Pharmacy* pharmacy, Pharmacist** associated_pharmacists, unsigned int pharmacists_count);
 
 /**
  * Display pharmacist details
