@@ -8,6 +8,8 @@
 #include "../vendor/utils/print_utils.h"
 #include "../../entity/requests/update/pharmacist_to_pharmacy_request.h"
 #include "../vendor/utils/stdin.h"
+#include "../../entity/requests/update/pharmacy_update_request.h"
+#include "../../entity/requests/update/pharmacist_update_request.h"
 
 // Private function declaration
 
@@ -149,4 +151,41 @@ Address* perform_address_create_subaction() {
     address->postal_code = get_address_postal_code();
 
     return address;
+}
+
+PharmacyUpdateRequest* perform_update_pharmacy_action() {
+    PharmacyUpdateRequest* request = (PharmacyUpdateRequest*)malloc(sizeof(PharmacyUpdateRequest));
+
+    request->id = get_id();
+    printf("Enter new values for entity\n");
+    request->name = get_pharmacy_name();
+    request->phone = get_phone_number();
+    request->address = perform_address_create_subaction();
+
+    return request;
+}
+
+PharmacistUpdateRequest* perform_update_pharmacist_action() {
+    PharmacistUpdateRequest* request = (PharmacistUpdateRequest*)malloc(sizeof(PharmacistUpdateRequest));
+
+    request->id = get_id();
+    printf("Enter new values for entity\n");
+    request->first_name = get_first_name();
+    request->last_name = get_last_name();
+    request->phone = get_phone_number();
+
+    return request;
+}
+
+PharmacistIdentifier* perform_pharmacist_detail_action() {
+    PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
+
+    identifier->first_name = get_first_name();
+    identifier->last_name = get_last_name();
+
+    return identifier;
+}
+
+char* perform_pharmacy_detail_action() {
+    return get_pharmacy_name();
 }

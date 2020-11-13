@@ -76,4 +76,14 @@ void display_last_name_initial_banner();
  */
 void display_last_name_error_banner();
 
+/**
+ * Display initial banner for entity id
+ */
+void display_id_initial_banner();
+
+/**
+ * Display error banner for entity id
+ */
+void display_id_error_banner();
+
 #endif //SEMESTRAL_PROJECT_INPUT_MESSAGES_H

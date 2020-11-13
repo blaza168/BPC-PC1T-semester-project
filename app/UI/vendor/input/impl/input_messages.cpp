@@ -92,3 +92,12 @@ void display_last_name_error_banner() {
     printf("Last name contains more or less characters than allowed.\n");
     printf("Please, enter correct format: ");
 }
+
+void display_id_initial_banner() {
+    printf("Enter entity id: ");
+}
+
+void display_id_error_banner() {
+    printf("You entered incorrect id.\n");
+    printf("Try again: ");
+}

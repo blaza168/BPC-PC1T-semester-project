@@ -4,6 +4,8 @@
 #include "../entity/requests/create/pharmacy_create_request.h"
 #include "../entity/requests/create/pharmacist_create_request.h"
 #include "../entity/requests/identifiers/pharmacist_identifier.h"
+#include "../entity/requests/update/pharmacy_update_request.h"
+#include "../entity/requests/update/pharmacist_update_request.h"
 
 /**
  * Part of application for manipulating with data stored in main
@@ -117,5 +119,26 @@ void delete_pharmacist_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadat
  * @param databaseMetadata
  */
 void delete_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
+
+/**
+ * Update pharmacy based on request
+ */
+void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy);
+
+/**
+ * Update pharmacist based on request
+ */
+void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist);
+
+/**
+ * Find pharmacists assigned to pharmacy
+ *
+ * @param pharmacy_id
+ * @param table
+ * @param databaseMetadata
+ * @param pharmacists_count size of returned array
+ * @return array of pointer to pharmacists
+ */
+Pharmacist** get_associated_pharmacists(unsigned int pharmacy_id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* pharmacists_count);
 
 #endif //SEMESTRAL_PROJECT_DATA_MANAGEMENT_H

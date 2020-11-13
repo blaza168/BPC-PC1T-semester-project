@@ -75,7 +75,13 @@ char* get_first_name();
  */
 char* get_last_name();
 
-
+/**
+ * Acceptable formats:
+ *      - int > 0
+ *
+ * @return number representing id of entity
+ */
+unsigned int get_id();
 
 
 #endif //SEMESTRAL_PROJECT_USER_INPUT_H

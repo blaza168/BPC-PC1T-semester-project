@@ -167,3 +167,26 @@ char* get_last_name() {
         validation_error = true;
     }
 }
+
+unsigned int get_id() {
+    long int buffer = 0;
+    bool validation_error = false;
+
+    while (buffer < 1) {
+
+        if (!validation_error) {
+            display_id_initial_banner();
+        } else {
+            display_id_error_banner();
+        }
+
+        scanf("%ld", &buffer);
+        clear_stdin();
+
+        if (buffer >= 1) {
+            return (unsigned int)buffer;
+        }
+
+        validation_error = true;
+    }
+}
