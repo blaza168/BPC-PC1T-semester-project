@@ -163,13 +163,14 @@ void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy) {
 }
 
 void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist) {
+    free(pharmacist->phone);
+    free(pharmacist->last_name);
+    free(pharmacist->first_name);
+
     pharmacist->phone = request->phone;
     pharmacist->last_name = request->last_name;
     pharmacist->first_name = request->first_name;
 
-    free(request->last_name);
-    free(request->first_name);
-    free(request->phone);
     free(request);
 }
 
