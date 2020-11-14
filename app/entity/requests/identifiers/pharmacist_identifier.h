@@ -10,3 +10,4 @@ struct PharmacistIdentifier {
 };
 
 #endif //SEMESTRAL_PROJECT_PHARMACIST_IDENTIFIER_H
+

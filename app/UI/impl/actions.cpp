@@ -10,6 +10,9 @@
 #include "../vendor/utils/stdin.h"
 #include "../../entity/requests/update/pharmacy_update_request.h"
 #include "../../entity/requests/update/pharmacist_update_request.h"
+#include "../../entity/requests/identifiers/pharmacy_identifier.h"
+#include "../../entity/requests/delete/pharmacy_delete_request.h"
+#include "../../entity/requests/delete/pharmacist_delete_request.h"
 
 // Private function declaration
 
@@ -73,7 +76,7 @@ PharmacistCreateRequest* perform_create_pharmacist_action() {
     request->first_name = get_first_name();
     request->last_name = get_last_name();
     request->phone = get_phone_number();
-
+    clear_screen();
 
     return request;
 }
@@ -87,7 +90,34 @@ PharmacyCreateRequest* perform_create_pharmacy_action() {
     request->name = get_pharmacy_name();
     request->phone = get_phone_number();
     request->address = perform_address_create_subaction();
+    clear_screen();
 
+    return request;
+}
+
+PharmacistDeleteRequest* perform_delete_pharmacist_action() {
+    PharmacistDeleteRequest* request = (PharmacistDeleteRequest*)malloc(sizeof(PharmacistDeleteRequest));
+    PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
+
+    printf("Delete pharmacist:\n");
+    printf("------------------\n");
+
+    request->first_name = get_first_name();
+    request->last_name = get_last_name();
+    clear_screen();
+
+    return request;
+}
+
+PharmacyDeleteRequest* perform_delete_pharmacy_action() {
+    PharmacyDeleteRequest* request = (PharmacyDeleteRequest*)malloc(sizeof(PharmacyDeleteRequest));
+    PharmacyIdentifier* identifier = (PharmacyIdentifier*)malloc(sizeof(PharmacyIdentifier));
+
+    printf("Delete pharmacy:\n");
+    printf("----------------\n");
+
+    request->name = get_pharmacy_name();
+    clear_screen();
 
     return request;
 }

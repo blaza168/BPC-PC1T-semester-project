@@ -7,6 +7,11 @@
 #include "app/UI/alerts.h"
 #include "app/UI/constants.h"
 #include "app/entity/requests/identifiers/pharmacist_identifier.h"
+#include "app/entity/requests/delete/pharmacist_delete_request.h"
+#include "app/entity/requests/delete/pharmacy_delete_request.h"
+#include "app/UI/impl/actions.cpp"
+
+
 
 
 int main() {
@@ -95,9 +100,50 @@ int main() {
 
             menuOption = MENU;
         } else if (menuOption == DELETE_PHARMACIST) {
+            PharmacistDeleteRequest* request = perform_delete_pharmacist_action();
+            Pharmacist* pharmacist = find_pharmacist(request->PharmacistIdentifier, &pharmacists, databaseMetadata);
 
-        } else if (menuOption == DELETE_PHARMACY) {
+            if (!pharmacist) {
+                char* error_msg = (char*)malloc(sizeof(char) * 50);
+                display_pharmacist_deletion_error_alert();
+                free(error_msg);
+                menuOption = MENU;
+                continue;
+            } 
 
+            display_pharmacist_deletion_success_alert();
+
+            free(identifier->id);
+            free(identifier->first_name);
+            free(identifier->last_name);
+            free(identifier->phone);
+            free(identifier->pharmacy_id);
+            free(identifier);
+               
+            menuOption = MENU;
+        } else if (menuOption == DELETE_PHARMACY)
+            PharmacyDeleteRequest* request = perform_delete_pharmacy_action();
+            Pharmacy* pharmacy = find_pharmacy(request->PharmacyIdentifier, &pharmacies, databaseMetadata);
+
+            if (!pharmacy) {
+                char* error_msg = (char*)malloc(sizeof(char) * 50);
+                display_pharmacy_deletion_error_alert();
+                free(error_msg);
+                menuOption = MENU;
+                continue;
+            }
+
+            display_pharmacy_deletion_success_alert();
+
+            free(identifier->id);
+            free(identifier->name);
+            free(identifier->phone);
+            free(identifier->city);
+            free(identifier->street);
+            free(identifier->postal_code);
+            free(identifier);
+           
+            menuOption = MENU;
         } else if (menuOption == EDIT_PHARMACY) {
             PharmacyUpdateRequest* request = perform_update_pharmacy_action();
             Pharmacy* pharmacy = find_pharmacy_by_id(request->id, &pharmacies, databaseMetadata);
@@ -160,5 +206,6 @@ int main() {
         }
     }
 
-    return 0;
+        return 0;
+
 }
