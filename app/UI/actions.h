@@ -62,7 +62,7 @@ char* perform_delete_pharmacy_action();
  * Get first name and last name
  * Clear screen
  *
- * @return PharmacistDeleteRequest filled with data
+ * @return PharmacistIdentifier filled with data
  */
 PharmacistIdentifier* perform_delete_pharmacist_action();
 

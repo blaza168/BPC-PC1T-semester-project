@@ -108,7 +108,7 @@ Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetada
  * @param table
  * @param databaseMetadata
  */
-void delete_pharmacist_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata);
+void delete_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata);
 
 /**
  * Completely remove pharmacy with all child references

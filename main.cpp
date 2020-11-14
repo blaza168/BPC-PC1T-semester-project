@@ -7,8 +7,6 @@
 #include "app/UI/alerts.h"
 #include "app/UI/constants.h"
 #include "app/entity/requests/identifiers/pharmacist_identifier.h"
-#include "app/entity/requests/delete/pharmacist_delete_request.h"
-#include "app/entity/requests/delete/pharmacy_delete_request.h"
 #include "app/UI/impl/actions.cpp"
 
 
@@ -100,48 +98,38 @@ int main() {
 
             menuOption = MENU;
         } else if (menuOption == DELETE_PHARMACIST) {
-            PharmacistDeleteRequest* request = perform_delete_pharmacist_action();
-            Pharmacist* pharmacist = find_pharmacist(request->PharmacistIdentifier, &pharmacists, databaseMetadata);
+            PharmacistIdentifier* request = perform_delete_pharmacist_action();
+            Pharmacist* pharmacist = find_pharmacist(request, &pharmacists, databaseMetadata);
 
             if (!pharmacist) {
-                char* error_msg = (char*)malloc(sizeof(char) * 50);
                 display_pharmacist_deletion_error_alert();
-                free(error_msg);
-                menuOption = MENU;
-                continue;
-            } 
-
-            display_pharmacist_deletion_success_alert();
-
-            free(identifier->id);
-            free(identifier->first_name);
-            free(identifier->last_name);
-            free(identifier->phone);
-            free(identifier->pharmacy_id);
-            free(identifier);
-               
-            menuOption = MENU;
-        } else if (menuOption == DELETE_PHARMACY)
-            PharmacyDeleteRequest* request = perform_delete_pharmacy_action();
-            Pharmacy* pharmacy = find_pharmacy(request->PharmacyIdentifier, &pharmacies, databaseMetadata);
-
-            if (!pharmacy) {
-                char* error_msg = (char*)malloc(sizeof(char) * 50);
-                display_pharmacy_deletion_error_alert();
-                free(error_msg);
                 menuOption = MENU;
                 continue;
             }
 
+            delete_pharmacist_by_id(pharmacist->id, &pharmacists, databaseMetadata);
+
+            display_pharmacist_deletion_success_alert();
+
+            free(request->first_name);
+            free(request->last_name);
+            free(request);
+               
+            menuOption = MENU;
+        } else if (menuOption == DELETE_PHARMACY) {
+            char* pharmacy_name = perform_delete_pharmacy_action();
+            Pharmacy* pharmacy = find_pharmacy(pharmacy_name, &pharmacies, databaseMetadata);
+
+            if (!pharmacy) {
+                display_pharmacy_deletion_error_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            delete_pharmacy_by_id(pharmacy->id, &pharmacies, databaseMetadata);
             display_pharmacy_deletion_success_alert();
 
-            free(identifier->id);
-            free(identifier->name);
-            free(identifier->phone);
-            free(identifier->city);
-            free(identifier->street);
-            free(identifier->postal_code);
-            free(identifier);
+            free(pharmacy_name);
            
             menuOption = MENU;
         } else if (menuOption == EDIT_PHARMACY) {

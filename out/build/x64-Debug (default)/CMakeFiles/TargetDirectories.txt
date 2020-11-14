@@ -1,3 +1,0 @@
-C:/Users/Jessica/Desktop/BPC-PC1T-semester-project/out/build/x64-Debug (default)/CMakeFiles/semestral_project.dir
-C:/Users/Jessica/Desktop/BPC-PC1T-semester-project/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
-C:/Users/Jessica/Desktop/BPC-PC1T-semester-project/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir

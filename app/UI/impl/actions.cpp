@@ -11,8 +11,6 @@
 #include "../../entity/requests/update/pharmacy_update_request.h"
 #include "../../entity/requests/update/pharmacist_update_request.h"
 #include "../../entity/requests/identifiers/pharmacy_identifier.h"
-#include "../../entity/requests/delete/pharmacy_delete_request.h"
-#include "../../entity/requests/delete/pharmacist_delete_request.h"
 
 // Private function declaration
 
@@ -95,9 +93,8 @@ PharmacyCreateRequest* perform_create_pharmacy_action() {
     return request;
 }
 
-PharmacistDeleteRequest* perform_delete_pharmacist_action() {
-    PharmacistDeleteRequest* request = (PharmacistDeleteRequest*)malloc(sizeof(PharmacistDeleteRequest));
-    PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
+PharmacistIdentifier* perform_delete_pharmacist_action() {
+    PharmacistIdentifier* request = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
 
     printf("Delete pharmacist:\n");
     printf("------------------\n");
@@ -109,17 +106,16 @@ PharmacistDeleteRequest* perform_delete_pharmacist_action() {
     return request;
 }
 
-PharmacyDeleteRequest* perform_delete_pharmacy_action() {
-    PharmacyDeleteRequest* request = (PharmacyDeleteRequest*)malloc(sizeof(PharmacyDeleteRequest));
-    PharmacyIdentifier* identifier = (PharmacyIdentifier*)malloc(sizeof(PharmacyIdentifier));
+char* perform_delete_pharmacy_action() {
+    char* pharmacy_name;
 
     printf("Delete pharmacy:\n");
     printf("----------------\n");
 
-    request->name = get_pharmacy_name();
+    pharmacy_name = get_pharmacy_name();
     clear_screen();
 
-    return request;
+    return pharmacy_name;
 }
 
 PharmacistToPharmacyRequest* perform_assign_action() {
