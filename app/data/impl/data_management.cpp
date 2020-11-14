@@ -163,13 +163,14 @@ void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy) {
 }
 
 void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist) {
+    free(pharmacist->phone);
+    free(pharmacist->last_name);
+    free(pharmacist->first_name);
+
     pharmacist->phone = request->phone;
     pharmacist->last_name = request->last_name;
     pharmacist->first_name = request->first_name;
 
-    free(request->last_name);
-    free(request->first_name);
-    free(request->phone);
     free(request);
 }
 
@@ -198,4 +199,18 @@ Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetada
     }
 
     return NULL;
+}
+
+Pharmacist** get_associated_pharmacists(unsigned int pharmacy_id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* pharmacists_count) {
+    Pharmacist** as_pharmacists = (Pharmacist**)malloc(sizeof(struct  Pharmacist*) * databaseMetadata->pharmacists_count);
+
+    *pharmacists_count = 0;
+    for (int i = 0; i < databaseMetadata->pharmacists_count; i++) {
+        if ((*table)[i]->pharmacy_id == pharmacy_id) {
+            as_pharmacists[*pharmacists_count] = (*table)[i];
+            *pharmacists_count += 1;
+        }
+    }
+
+    return as_pharmacists;
 }

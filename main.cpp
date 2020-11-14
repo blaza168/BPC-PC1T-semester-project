@@ -199,7 +199,10 @@ int main() {
                 continue;
             }
 
-            display_pharmacy_detail_alert(pharmacy);
+            unsigned int pharmacists_count = 0;
+            Pharmacist** associated_pharmacists = get_associated_pharmacists(pharmacy->id, &pharmacists, databaseMetadata, &pharmacists_count);
+
+            display_pharmacy_detail_alert(pharmacy, associated_pharmacists, pharmacists_count);
 
             free(pharmacy_name);
             menuOption = MENU;

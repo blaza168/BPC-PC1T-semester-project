@@ -130,4 +130,15 @@ void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy);
  */
 void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist);
 
+/**
+ * Find pharmacists assigned to pharmacy
+ *
+ * @param pharmacy_id
+ * @param table
+ * @param databaseMetadata
+ * @param pharmacists_count size of returned array
+ * @return array of pointer to pharmacists
+ */
+Pharmacist** get_associated_pharmacists(unsigned int pharmacy_id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* pharmacists_count);
+
 #endif //SEMESTRAL_PROJECT_DATA_MANAGEMENT_H
