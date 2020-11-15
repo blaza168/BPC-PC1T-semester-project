@@ -72,5 +72,24 @@ void display_pharmacy_detail_alert(Pharmacy* pharmacy, Pharmacist** associated_p
  */
 void display_pharmacist_detail_alert(Pharmacist* pharmacist, Pharmacy* pharmacy);
 
+/**
+ * Display alert after successful deletion of pharmacist
+ */
+void display_pharmacist_deletion_success_alert();
+
+/**
+ * Display alert if pharmacist is not registered in the system
+ */
+void display_pharmacist_deletion_error_alert();
+
+/**
+ * Display alert after successful deletion of pharmacy
+ */
+void display_pharmacy_deletion_success_alert();
+
+/**
+ * Display alert if pharmacy is not registered in the system
+ */
+void display_pharmacy_deletion_error_alert();
 
 #endif //SEMESTRAL_PROJECT_ALERTS_H
