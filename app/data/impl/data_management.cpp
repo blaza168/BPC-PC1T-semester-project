@@ -218,7 +218,8 @@ Pharmacist** get_associated_pharmacists(unsigned int pharmacy_id, Pharmacist*** 
     // sort by last_name
     for (int i = 0; i < *pharmacists_count; i++) {
         for (int j = 0; j < *pharmacists_count - i - 1; j++) {
-            if (strcmp(as_pharmacists[j]->last_name, as_pharmacists[j + 1]->last_name) == 1) {
+            int cmp_result = strcmp(as_pharmacists[j]->last_name, as_pharmacists[j + 1]->last_name);
+            if (cmp_result >= 1) {
                 Pharmacist* buff = as_pharmacists[j + 1];
                 as_pharmacists[j + 1] = as_pharmacists[j];
                 as_pharmacists[j] = buff;
