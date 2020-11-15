@@ -141,10 +141,10 @@ Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetada
     return find_pharmacy_by_id(id, table, databaseMetadata, NULL);
 }
 
-void delete_pharmacist_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
+void delete_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata) {
     unsigned int pharmacist_index;
 
-    find_pharmacy_by_id(id, table, databaseMetadata, &pharmacist_index);
+    find_pharmacist_by_id(id, table, databaseMetadata, &pharmacist_index);
 
 
 }
