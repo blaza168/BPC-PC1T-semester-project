@@ -131,7 +131,7 @@ void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy);
 void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist);
 
 /**
- * Find pharmacists assigned to pharmacy
+ * Find pharmacists assigned to pharmacy sorted by last name
  *
  * @param pharmacy_id
  * @param table

@@ -26,18 +26,11 @@ Pharmacy* create_request_to_pharmacy(PharmacyCreateRequest* request) {
 Pharmacist* create_request_to_pharmacist(PharmacistCreateRequest* request) {
     Pharmacist* pharmacist = (Pharmacist*)malloc(sizeof(Pharmacist));
 
-    pharmacist->first_name = (char*)malloc(sizeof(char) * strlen(request->first_name) + 1);
-    pharmacist->last_name = (char*)malloc(sizeof(char) * strlen(request->last_name) + 1);
-    pharmacist->phone = (char*)malloc(sizeof(char) * strlen(request->phone) + 1);
-
-    strcpy(pharmacist->first_name, request->first_name);
-    strcpy(pharmacist->last_name, request->last_name);
-    strcpy(pharmacist->phone, request->phone);
+    pharmacist->first_name = request->first_name;
+    pharmacist->last_name = request->last_name;
+    pharmacist->phone = request->phone;
     pharmacist->pharmacy_id = 0;
 
-    free(request->first_name);
-    free(request->last_name);
-    free(request->phone);
     free(request);
 
     return pharmacist;
