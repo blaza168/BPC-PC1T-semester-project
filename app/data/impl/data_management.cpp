@@ -85,8 +85,7 @@ unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** t
     // Allocate larger memory if needed
     if (databaseMetadata->pharmacists_count == databaseMetadata->pharmacists_capacity) {
         databaseMetadata->pharmacists_capacity += 10;
-        Pharmacist **buffer = (Pharmacist **) malloc(
-                sizeof(struct Pharmacist *) * databaseMetadata->pharmacists_capacity);
+        Pharmacist **buffer = (Pharmacist **) malloc(sizeof(struct Pharmacist *) * databaseMetadata->pharmacists_capacity);
 
         // copy data from old to new
         for (int i = 0; i < databaseMetadata->pharmacists_count; i++) {
