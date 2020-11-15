@@ -113,7 +113,7 @@ Pharmacist* find_pharmacist(PharmacistIdentifier* identifier, Pharmacist*** tabl
 
     for (int i = 0; i < databaseMetadata->pharmacists_count; i++) {
         if (strcmp((*table)[i]->first_name, identifier->first_name) == 0 && strcmp((*table)[i]->last_name, identifier->last_name) == 0) {
-            return *table[i];
+            return (*table)[i];
         }
     }
 
@@ -126,7 +126,7 @@ Pharmacy* find_pharmacy(char* name, Pharmacy*** table, DatabaseMetadata* databas
         char* pharmacy_name = (*table)[i]->name;
         int cmp_result = strcmp(pharmacy_name, name);
         if (cmp_result == 0) {
-            return *table[i];
+            return (*table)[i];
         }
     }
 
