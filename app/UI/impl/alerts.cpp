@@ -42,27 +42,46 @@ void display_pharmacist_creation_error_alert() {
 }
 
 void display_assign_success_alert() {
-
+	printf("The assignment was successful.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
 }
 
 void display_assign_error_alert(char* error_message) {
-
+	printf("The assign was not succesful.\n\n");
+	printf("Press Enter to continue\n");
+	printf("%s", error_message);
+	clear_stdin();
+	clear_screen();
 }
 
 void display_pharmacy_not_found_alert() {
-
+	printf("This pharmacy is not registered in this system.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
 }
 
 void display_pharmacist_not_found_alert() {
-
+	printf("This pharmacist is not registered in this system.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
 }
 
 void display_pharmacy_update_success_alert() {
-
+	printf("Update of pharmacy was successful.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
 }
 
 void display_pharmacist_update_success_alert() {
-
+	printf("Update of pharmacist was successful.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
 }
 
 void display_pharmacy_detail_alert(Pharmacy* pharmacy, Pharmacist** associated_pharmacists, unsigned int pharmacists_count) {
