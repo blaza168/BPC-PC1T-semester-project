@@ -144,16 +144,41 @@ Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetada
 void delete_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata) {
     unsigned int pharmacist_index;
 
-    find_pharmacist_by_id(id, table, databaseMetadata, &pharmacist_index);
+    Pharmacist* pharmacist = find_pharmacist_by_id(id, table, databaseMetadata, &pharmacist_index);
 
+    // delete pharmacist
+    free(pharmacist->phone);
+    free(pharmacist->last_name);
+    free(pharmacist->first_name);
+    free(pharmacist);
 
+    for (unsigned int i = pharmacist_index; i < databaseMetadata->pharmacists_count - 1; i++) {
+        (*table)[i] = (*table)[i + 1];
+    }
+
+    databaseMetadata->pharmacists_count -= 1;
 }
 
 void delete_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata) {
     unsigned int pharmacy_index;
 
-    find_pharmacy_by_id(id, table, databaseMetadata, &pharmacy_index);
+    Pharmacy* pharmacy = find_pharmacy_by_id(id, table, databaseMetadata, &pharmacy_index);
 
+    // delete pharmacy
+    free(pharmacy->phone);
+    free(pharmacy->name);
+    free(pharmacy->address->street);
+    free(pharmacy->address->postal_code);
+    free(pharmacy->address->city);
+    free(pharmacy->address);
+    free(pharmacy);
+
+    // shift other entities
+    for (unsigned int i = pharmacy_index; i < databaseMetadata->pharmacies_count - 1; i++) {
+        (*table)[i] = (*table)[i + 1];
+    }
+
+    databaseMetadata->pharmacies_count -= 1;
 }
 
 void update_pharmacy(PharmacyUpdateRequest* request, Pharmacy* pharmacy) {
@@ -174,33 +199,6 @@ void update_pharmacist(PharmacistUpdateRequest* request, Pharmacist* pharmacist)
     pharmacist->first_name = request->first_name;
 
     free(request);
-}
-
-// Private functions implementation
-Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* index) {
-    for (int i = 0; databaseMetadata->pharmacists_count; i++) {
-        if ((*table)[i]->id == id) {
-            if (index) {
-                *index = i;
-            }
-            return (*table)[i];
-        }
-    }
-
-    return NULL;
-}
-
-Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata, unsigned int* index) {
-    for (int i = 0; databaseMetadata->pharmacies_count; i++) {
-        if ((*table)[i]->id == id) {
-            if (index) {
-                *index = i;
-            }
-            return (*table)[i];
-        }
-    }
-
-    return NULL;
 }
 
 Pharmacist** get_associated_pharmacists(unsigned int pharmacy_id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* pharmacists_count) {
@@ -228,4 +226,32 @@ Pharmacist** get_associated_pharmacists(unsigned int pharmacy_id, Pharmacist*** 
     }
 
     return as_pharmacists;
+}
+
+
+// Private functions implementation
+Pharmacist* find_pharmacist_by_id(unsigned int id, Pharmacist*** table, DatabaseMetadata* databaseMetadata, unsigned int* index) {
+    for (int i = 0; databaseMetadata->pharmacists_count; i++) {
+        if ((*table)[i]->id == id) {
+            if (index) {
+                *index = i;
+            }
+            return (*table)[i];
+        }
+    }
+
+    return NULL;
+}
+
+Pharmacy* find_pharmacy_by_id(unsigned int id, Pharmacy*** table, DatabaseMetadata* databaseMetadata, unsigned int* index) {
+    for (int i = 0; databaseMetadata->pharmacies_count; i++) {
+        if ((*table)[i]->id == id) {
+            if (index) {
+                *index = i;
+            }
+            return (*table)[i];
+        }
+    }
+
+    return NULL;
 }

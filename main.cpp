@@ -149,7 +149,7 @@ int main() {
             }
 
             update_pharmacist(request, pharmacist);
-            display_pharmacist_not_found_alert();
+            display_pharmacist_update_success_alert();
             menuOption = MENU;
         } else if (menuOption == SEARCH_FOR_PHARMACIST) {
             PharmacistIdentifier* identifier = perform_pharmacist_detail_action();
