@@ -63,7 +63,7 @@ unsigned int insert_pharmacy(PharmacyCreateRequest* request, Pharmacy*** table, 
 
         // copy data from old to new
         for (int i = 0; i < databaseMetadata->pharmacies_count; i++) {
-            buffer[i] = *table[i];
+            buffer[i] = (*table)[i];
         }
         free(*table);
 
@@ -76,7 +76,7 @@ unsigned int insert_pharmacy(PharmacyCreateRequest* request, Pharmacy*** table, 
     Pharmacy* pharmacy = create_request_to_pharmacy(request);
     pharmacy->id = databaseMetadata->pharmacies_last_id;
 
-    *table[databaseMetadata->pharmacies_count - 1] = pharmacy;
+    (*table)[databaseMetadata->pharmacies_count - 1] = pharmacy;
 
     return databaseMetadata->pharmacies_last_id;
 }
@@ -89,7 +89,7 @@ unsigned int insert_pharmacist(PharmacistCreateRequest* request, Pharmacist*** t
 
         // copy data from old to new
         for (int i = 0; i < databaseMetadata->pharmacists_count; i++) {
-            buffer[i] = *table[i];
+            buffer[i] = (*table)[i];
         }
         free(*table);
 
