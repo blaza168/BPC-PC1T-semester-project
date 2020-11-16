@@ -107,3 +107,31 @@ void display_pharmacist_detail_alert(Pharmacist* pharmacist, Pharmacy* pharmacy)
     clear_stdin();
     clear_screen();
 }
+
+void display_pharmacist_deletion_success_alert() {
+	printf("The pharmacist has been unregistered from this system.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
+}
+
+void display_pharmacist_deletion_error_alert() {
+	printf("The pharmacist is not registered in this system yet.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
+}
+
+void display_pharmacy_deletion_success_alert() {
+	printf("The pharmacy has been unregistered from this system.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
+}
+
+void display_pharmacy_deletion_error_alert() {
+	printf("The pharmacy is not registered in this system yet.\n\n");
+	printf("Press Enter to continue");
+	clear_stdin();
+	clear_screen();
+}
