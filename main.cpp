@@ -95,8 +95,35 @@ int main() {
 
             menuOption = MENU;
         } else if (menuOption == DELETE_PHARMACIST) {
+            PharmacistIdentifier* request = perform_delete_pharmacist_action();
+            Pharmacist* pharmacist = find_pharmacist(request, &pharmacists, databaseMetadata);
 
+            if (!pharmacist) {
+                display_pharmacist_deletion_error_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            delete_pharmacist_by_id(pharmacist->id, &pharmacists, databaseMetadata);
+            display_pharmacist_deletion_success_alert();
+            free(request->first_name);
+            free(request->last_name);
+            free(request);
+            menuOption = MENU;
         } else if (menuOption == DELETE_PHARMACY) {
+            char* pharmacy_name = perform_delete_pharmacy_action();
+            Pharmacy* pharmacy = find_pharmacy(pharmacy_name, &pharmacies, databaseMetadata);
+
+            if (!pharmacy) {
+                display_pharmacy_deletion_error_alert();
+                menuOption = MENU;
+                continue;
+            }
+
+            delete_pharmacy_by_id(pharmacy->id, &pharmacies, databaseMetadata);
+            display_pharmacy_deletion_success_alert();
+            free(pharmacy_name);
+            menuOption = MENU;
 
         } else if (menuOption == EDIT_PHARMACY) {
             PharmacyUpdateRequest* request = perform_update_pharmacy_action();
@@ -122,7 +149,7 @@ int main() {
             }
 
             update_pharmacist(request, pharmacist);
-            display_pharmacist_not_found_alert();
+            display_pharmacist_update_success_alert();
             menuOption = MENU;
         } else if (menuOption == SEARCH_FOR_PHARMACIST) {
             PharmacistIdentifier* identifier = perform_pharmacist_detail_action();

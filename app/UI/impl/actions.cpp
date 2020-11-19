@@ -92,6 +92,31 @@ PharmacyCreateRequest* perform_create_pharmacy_action() {
     return request;
 }
 
+PharmacistIdentifier* perform_delete_pharmacist_action() {
+    PharmacistIdentifier* request = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
+
+    printf("Delete pharmacist:\n");
+    printf("------------------\n");
+
+    request->first_name = get_first_name();
+    request->last_name = get_last_name();
+    clear_screen();
+
+    return request;
+}
+
+char* perform_delete_pharmacy_action() {
+    char* pharmacy_name;
+
+    printf("Delete pharmacy:\n");
+    printf("----------------\n");
+
+    pharmacy_name = get_pharmacy_name();
+    clear_screen();
+
+    return pharmacy_name;
+}
+
 PharmacistToPharmacyRequest* perform_assign_action() {
     PharmacistToPharmacyRequest* request = (PharmacistToPharmacyRequest*)malloc(sizeof(PharmacistToPharmacyRequest));
     PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
