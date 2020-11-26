@@ -68,7 +68,7 @@ PharmacistCreateRequest* perform_create_pharmacist_action() {
     PharmacistCreateRequest* request = (PharmacistCreateRequest*)malloc(sizeof(PharmacistCreateRequest));
 
     printf("Create pharmacist\n");
-    printf("-----------------");
+    printf("-----------------\n");
 
     request->first_name = get_first_name();
     request->last_name = get_last_name();
@@ -95,8 +95,8 @@ PharmacyCreateRequest* perform_create_pharmacy_action() {
 PharmacistIdentifier* perform_delete_pharmacist_action() {
     PharmacistIdentifier* request = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
 
-    printf("Delete pharmacist:\n");
-    printf("------------------\n");
+    printf("Delete pharmacist\n");
+    printf("-----------------\n");
 
     request->first_name = get_first_name();
     request->last_name = get_last_name();
@@ -108,8 +108,8 @@ PharmacistIdentifier* perform_delete_pharmacist_action() {
 char* perform_delete_pharmacy_action() {
     char* pharmacy_name;
 
-    printf("Delete pharmacy:\n");
-    printf("----------------\n");
+    printf("Delete pharmacy\n");
+    printf("---------------\n");
 
     pharmacy_name = get_pharmacy_name();
     clear_screen();
@@ -121,7 +121,8 @@ PharmacistToPharmacyRequest* perform_assign_action() {
     PharmacistToPharmacyRequest* request = (PharmacistToPharmacyRequest*)malloc(sizeof(PharmacistToPharmacyRequest));
     PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
 
-    printf("Assign pharmacist to pharmacy:\n");
+    printf("Assign pharmacist to pharmacy\n");
+    printf("-----------------------------\n");
 
     request->pharmacy_name = get_pharmacy_name();
     identifier->first_name = get_first_name();
@@ -181,6 +182,9 @@ Address* perform_address_create_subaction() {
 PharmacyUpdateRequest* perform_update_pharmacy_action() {
     PharmacyUpdateRequest* request = (PharmacyUpdateRequest*)malloc(sizeof(PharmacyUpdateRequest));
 
+    printf("Edit pharmacy\n");
+    printf("-------------\n");
+
     request->id = get_id();
     printf("Enter new values for entity\n");
     request->name = get_pharmacy_name();
@@ -193,8 +197,11 @@ PharmacyUpdateRequest* perform_update_pharmacy_action() {
 PharmacistUpdateRequest* perform_update_pharmacist_action() {
     PharmacistUpdateRequest* request = (PharmacistUpdateRequest*)malloc(sizeof(PharmacistUpdateRequest));
 
+    printf("Edit pharmacist\n");
+    printf("---------------\n");
+
     request->id = get_id();
-    printf("Enter new values for entity\n");
+    printf("Enter new values for entity:\n");
     request->first_name = get_first_name();
     request->last_name = get_last_name();
     request->phone = get_phone_number();
@@ -205,6 +212,9 @@ PharmacistUpdateRequest* perform_update_pharmacist_action() {
 PharmacistIdentifier* perform_pharmacist_detail_action() {
     PharmacistIdentifier* identifier = (PharmacistIdentifier*)malloc(sizeof(PharmacistIdentifier));
 
+    printf("Search for pharmacist\n");
+    printf("---------------------\n");
+
     identifier->first_name = get_first_name();
     identifier->last_name = get_last_name();
 
@@ -212,5 +222,9 @@ PharmacistIdentifier* perform_pharmacist_detail_action() {
 }
 
 char* perform_pharmacy_detail_action() {
+
+    printf("Search for pharmacy\n");
+    printf("-------------------\n");
+
     return get_pharmacy_name();
 }
